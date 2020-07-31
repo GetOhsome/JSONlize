@@ -1,4 +1,4 @@
-# JSONLocalize
+# JSONLocalize-Swift
 
 A simple swift package for localizing your apps from JSON files with easy plural and dictionary handling.
 
