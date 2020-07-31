@@ -204,7 +204,7 @@ Swift:
 "commentCount".JSONlized(.plural(2)) //Output: "2 Comments" replaced ${i} with 2
 ```
 
-#LICENSE
+# LICENSE
 
 MIT License
 
