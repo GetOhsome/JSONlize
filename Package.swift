@@ -4,15 +4,15 @@
 import PackageDescription
 
 let package = Package(
-    name: "JSONLocalize",
+    name: "JSONlize",
     products: [
         .library(
-            name: "JSONLocalize",
-            targets: ["JSONLocalize"]),
+            name: "JSONlize",
+            targets: ["JSONlize"]),
     ],
     targets: [
         .target(
-            name: "JSONLocalize",
+            name: "JSONlize",
             dependencies: []),
     ]
 )
