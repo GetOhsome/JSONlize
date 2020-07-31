@@ -1,9 +1,9 @@
 import Foundation
 
-open class JSONLocalize{
-    public static let shared = JSONLocalize()
+open class JSONlize{
+    public static let shared = JSONlize()
     
-    enum LocalizedItem {
+    enum item {
         case string(_ value: String)
         case plural(_ value: [String : String])
         case dict(_ value: [String: String])
@@ -21,7 +21,7 @@ open class JSONLocalize{
         case jsonParse(_ msg: String)
     }
     
-    var items = [String: LocalizedItem]()
+    var items = [String: item]()
 
     
     var fallbackLanguage: String!
@@ -84,15 +84,15 @@ open class JSONLocalize{
 
 public extension String{
     
-    var localized: String{
-        return localized(.string)
+    var JSONlized: String{
+        return JSONlized(.string)
     }
     
     func format(_ args: CVarArg...) -> String{
         return String(format: self, arguments: args)
     }
     
-    func localized(_ localizedType: JSONLocalize.LocalizedType) -> String{
+    func JSONlized(_ localizedType: JSONlize.LocalizedType) -> String{
         switch localizedType {
             case .plural(let input):
                 return pluralized(input: input)
@@ -105,7 +105,7 @@ public extension String{
     
     //string
     private func localizedString() -> String{
-        let item = JSONLocalize.shared.items[self]
+        let item = JSONlize.shared.items[self]
         switch item {
             case .string(let value):
                 return value
@@ -116,7 +116,7 @@ public extension String{
     
     //dictionary
     private func localized(_ key: String) -> String{
-        let item = JSONLocalize.shared.items[self]
+        let item = JSONlize.shared.items[self]
         switch item {
             case .dict(let value):
                 if let out = value[key]{
@@ -132,7 +132,7 @@ public extension String{
     
     //plurals
     private func pluralized(input: Int) -> String{
-        let item = JSONLocalize.shared.items[self]
+        let item = JSONlize.shared.items[self]
         switch item {
             case .plural(let value):
                 if let out = value["\(input)"]{
