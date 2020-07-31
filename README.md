@@ -12,7 +12,7 @@ A simple swift package for localizing your apps from JSON files with easy plural
 JSONLocalize.shared.load(
     fileHandler: { language in 
         //language: current system language string like "en-US"
-        return Bundle.main.url(forResource: "lang.\(language)", withExtension: "json") //returning an URL to file for example: "lang.en-US.json"
+        return Bundle.main.url(forResource: "lang.\(language)", withExtension: "json") //returning an URL for file e.g. "lang.en-US.json"
     },
     defaultLanguage: "en-US" //fallback language if json file for current system language is not found
 )
