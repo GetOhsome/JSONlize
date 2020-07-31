@@ -9,7 +9,7 @@ A simple swift package for localizing your apps from JSON files with easy plural
 ##### Example:
 
 ```swift
-JSONLocalize.shared.load(
+JSONlize.shared.load(
     fileHandler: { language in 
         //language: current system language string like "en-US"
         return Bundle.main.url(forResource: "lang.\(language)", withExtension: "json") //returning an URL for file e.g. "lang.en-US.json"
@@ -27,7 +27,7 @@ The block can return an optional object of type `URL` to the desired JSON file. 
 
 ## Types
 
-There are 3 different kinds of Strings that can be localized with `LocalizedType`.
+There are 3 different kinds of Strings that can be localized with `JSONLize.LocalizedType`.
 
 ```swift
 enum LocalizedType {
@@ -95,23 +95,23 @@ Following examples use these JSON example files:
 
 ## Strings
 
-use `.localized` on any String to get the localized value
+use `.JSONlized` on any String to get the localized value
 
 #### Example
 
 ```swift
 //en-US
-"sentence".localized //Output: "This is a testsentence."
+"sentence".JSONlized //Output: "This is a testsentence."
 
 //de-DE
-"sentence".localized //Output: "Das ist ein Satz."
+"sentence".JSONlized //Output: "Das ist ein Satz."
 ```
 
-alternatively you can use `.localized(.string)` to achieve the same result.
+alternatively you can use `.JSONlized(.string)` to achieve the same result.
 
 ## Dictionaries
 
-use `localized(_ localizedType: JSONLocalize.LocalizedType)` with `.dict` as `JSONLocalize.LocalizedType` on any String to get the localized value of a dictionary value.
+use `JSONlized(_ localizedType: JSONlize.LocalizedType)` with `.dict` as `JSONlize.LocalizedType` on any String to get the localized value of a dictionary value.
 
 `.dict(_ key: String)` takes a `String` as parameter for the **key** to look up.
 
@@ -119,19 +119,19 @@ use `localized(_ localizedType: JSONLocalize.LocalizedType)` with `.dict` as `JS
 
 ```swift
 //en-US
-"category".localized(.dict("travel")) //Output: "Travel"
-"category".localized(.dict("art")) //Output: "Art"
-"category".localized(.dict("food")) //Output: "Food"
+"category".JSONlized(.dict("travel")) //Output: "Travel"
+"category".JSONlized(.dict("art")) //Output: "Art"
+"category".JSONlized(.dict("food")) //Output: "Food"
 
 //de-DE
-"category".localized(.dict("travel")) //Output: "Reisen"
-"category".localized(.dict("art")) //Output: "Kunst"
-"category".localized(.dict("food")) //Output: "Essen"
+"category".JSONlized(.dict("travel")) //Output: "Reisen"
+"category".JSONlized(.dict("art")) //Output: "Kunst"
+"category".JSONlized(.dict("food")) //Output: "Essen"
 ```
 
 ## Plurals
 
-use `localized(_ localizedType: JSONLocalize.LocalizedType)` with `.plural` as `JSONLocalize.LocalizedType` on any String to get the localized value of a plural value.
+use `JSONlized(_ localizedType: JSONLocalize.LocalizedType)` with `.plural` as `JSONLocalize.LocalizedType` on any String to get the localized value of a plural value.
 
 `.plural(_ input: Int)` takes an `Int` as parameter for the **key** to look up.
 
@@ -139,14 +139,14 @@ use `localized(_ localizedType: JSONLocalize.LocalizedType)` with `.plural` as `
 
 ```swift
 //en-US
-"comment".localized(.plural(0)) //Output: "Comments"
-"comment".localized(.plural(1)) //Output: "Comment"
-"comment".localized(.plural(2)) //Output: "Comments"
+"comment".JSONlized(.plural(0)) //Output: "Comments"
+"comment".JSONlized(.plural(1)) //Output: "Comment"
+"comment".JSONlized(.plural(2)) //Output: "Comments"
 
 //de-DE
-"comment".localized(.plural(0)) //Output: "Kommentare"
-"comment".localized(.plural(1)) //Output: "Kommentar"
-"comment".localized(.plural(2)) //Output: "Kommentare"
+"comment".JSONlized(.plural(0)) //Output: "Kommentare"
+"comment".JSONlized(.plural(1)) //Output: "Kommentar"
+"comment".JSONlized(.plural(2)) //Output: "Kommentare"
 ```
 
 # JSON
@@ -174,9 +174,9 @@ Swift:
 
 ```swift
 //en-US
-"comment".localized(.plural(0)) //Output: "Comments" value of "*"
-"comment".localized(.plural(1)) //Output: "Comment" value of "1"
-"comment".localized(.plural(2)) //Output: "Comments" value of "*"
+"comment".JSONlized(.plural(0)) //Output: "Comments" value of "*"
+"comment".JSONlized(.plural(1)) //Output: "Comment" value of "1"
+"comment".JSONlized(.plural(2)) //Output: "Comments" value of "*"
 ```
 
 #### Input
@@ -199,7 +199,7 @@ JSON:
 Swift:
 
 ```swift
-"commentCount".localized(.plural(0)) //Output: "0 Comments" replaced ${i} with 0
-"commentCount".localized(.plural(1)) //Output: "1 Comment" replaced ${i} with 1
-"commentCount".localized(.plural(2)) //Output: "2 Comments" replaced ${i} with 2
+"commentCount".JSONlized(.plural(0)) //Output: "0 Comments" replaced ${i} with 0
+"commentCount".JSONlized(.plural(1)) //Output: "1 Comment" replaced ${i} with 1
+"commentCount".JSONlized(.plural(2)) //Output: "2 Comments" replaced ${i} with 2
 ```
